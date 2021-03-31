@@ -8,6 +8,8 @@ metadata:
     app.kubernetes.io/component: database
     app.kubernetes.io/part-of: wordpress
     app.kubernetes.io/managed-by: helm
+    app: "test"
+    team: "aks"
 spec:
   replicas: 3
   selector:
@@ -20,7 +22,7 @@ spec:
     spec:
       containers:
       - name: hello-kubernetes
-        image: nginx
+        image: nginx:latest
         ports:
         - containerPort: 8080
         securityContext:
