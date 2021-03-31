@@ -14,9 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag helmchecker:$(date +%s)
-    
-    - name: GitHub Container Registry Docker Action
-      uses: trentjones21/github-docker@master
+    - name: Build and Publish head Docker image
+      uses: VaultVulp/gp-docker-action@1.1.7
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }} # Provide GITHUB_TOKEN to login into the GitHub Packages
+        image-name: helmchecker # Provide Docker image name
+        pull-image: true # Raise the flag to try to pull image
